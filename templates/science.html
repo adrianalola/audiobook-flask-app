@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Articles</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Science Articles</h1>
+        <a href="{{ url_for('home') }}">🏠 Back to Home</a>
+
+        <p>Here you can find science-related articles.</p>
+        
+        <ul>
+            <li><a href="https://www.nature.com/" target="_blank">Nature</a></li>
+            <li><a href="https://www.sciencedaily.com/" target="_blank">Science Daily</a></li>
+            <li><a href="https://www.scientificamerican.com/" target="_blank">Scientific American</a></li>
+        </ul>
+    </div>
+</body>
+</html>

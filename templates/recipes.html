@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cooking Recipes</h1>
+        <a href="{{ url_for('home') }}">🏠 Back to Home</a>
+
+        <p>Explore delicious recipes from around the world.</p>
+        
+        <ul>
+            <li><a href="https://www.allrecipes.com/" target="_blank">All Recipes</a></li>
+            <li><a href="https://www.foodnetwork.com/" target="_blank">Food Network</a></li>
+            <li><a href="https://www.bbcgoodfood.com/" target="_blank">BBC Good Food</a></li>
+        </ul>
+    </div>
+</body>
+</html>

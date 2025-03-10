@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World News</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Latest World News</h1>
+        <a href="{{ url_for('home') }}">🏠 Back to Home</a>
+
+        <p>Stay updated with the most important news worldwide.</p>
+        
+        <ul>
+            <li><a href="https://www.bbc.com/news" target="_blank">BBC News</a></li>
+            <li><a href="https://www.cnn.com/" target="_blank">CNN</a></li>
+            <li><a href="https://www.nytimes.com/" target="_blank">The New York Times</a></li>
+        </ul>
+    </div>
+</body>
+</html>

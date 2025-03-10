@@ -1,0 +1,208 @@
+/* style.css */
+
+/* body styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;  /* Dark gray text */
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+/* container */
+.container {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Heading  */
+h1 {
+    color: antiquewhite;  /* color for the heading */
+}
+
+/* labels */
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Input fields */
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* textarea */
+textarea {
+    height: 150px;
+    resize: none;
+}
+.auth-buttons {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.auth-buttons button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Buttons */
+button {
+    --active: 0;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    font-family: monospace;
+    font-weight: bold;
+    border: 0;
+    background: lightpink;
+    padding: 0;
+    box-sizing: border-box;
+    transition: transform 0.2s ease-in-out;
+    display: block;
+    margin: 10px auto;
+    height: 50px;
+    width: 160px;
+}
+.auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-buttons .welcome-text {
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+}
+
+.auth-buttons button {
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* stilos de cada botón */
+.login-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.register-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.dashboard-btn {
+    background-color: #ff9800;
+    color: white;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* efecto al pasar el mouse */
+.auth-buttons button:hover {
+    opacity: 0.8;
+}
+
+/* Button hover effect */
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Button inner span effects */
+button span:first-of-type {
+    padding: 1rem 4rem;
+}
+
+button span:not(:first-of-type) {
+    position: absolute;
+}
+
+[aria-hidden] { 
+    color: transparent; 
+}
+
+button span {
+    inset: 0;
+    display: grid;
+    place-items: center;
+    transition: 0.2s ease;
+    border: 2px solid black;
+}
+
+span:nth-of-type(1) { --bg: #FF90E8; }
+span:nth-of-type(2) { --coefficient: 1; --bg: #FFD433; }
+span:nth-of-type(3) { --coefficient: 2; --bg: #121212; }
+
+button:active {
+    --active: 0.5;
+}
+
+/* responsable for mobile devices */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 80%;
+        padding: 15px;
+    }
+}
+
+/* Background pattern */
+html {
+    --r: 56px;
+    --c1: #3FB8AF 99%, #0000 101%;
+    --c2: #FF9E9D 99%, #0000 101%;
+    
+    --s: calc(var(--r) * 0.866);
+    --g0: radial-gradient(var(--r), var(--c1));
+    --g1: radial-gradient(var(--r), var(--c2));
+    --f: radial-gradient(var(--r) at calc(100% + var(--s)) 50%, var(--c1));
+    --p: radial-gradient(var(--r) at 100% 50%, var(--c2));
+
+    background:
+      var(--f) 0 calc(-5 * var(--r) / 2),
+      var(--f) calc(-2 * var(--s)) calc(var(--r) / 2),
+      var(--p) 0 calc(-2 * var(--r)),
+      var(--g0) var(--s) calc(-5 * var(--r) / 2),
+      var(--g1) var(--s) calc( 5 * var(--r) / 2),
+      radial-gradient(var(--r) at 100% 100%, var(--c1)) 0 calc(-1 * var(--r)),   
+      radial-gradient(var(--r) at 0% 50%, var(--c1)) 0 calc(-4 * var(--r)),
+      var(--g1) calc(-1 * var(--s)) calc(-7 * var(--r) / 2),
+      var(--g0) calc(-1 * var(--s)) calc(-5 * var(--r) / 2),
+      var(--p) calc(-2 * var(--s)) var(--r),
+      var(--g0) calc(-1 * var(--s)) calc(var(--r) / 2),
+      var(--g1) calc(-1 * var(--s)) calc(var(--r) / -2),
+      var(--g0) 0 calc(-1 * var(--r)),
+      var(--g1) var(--s) calc(var(--r) / -2),
+      var(--g0) var(--s) calc(var(--r) / 2) 
+      #FF9E9D; /* Background fallback color */
+
+    background-size: calc(4 * var(--s)) calc(6 * var(--r));
+}
