@@ -50,7 +50,7 @@
         </a>
 
         <a href="{{ url_for('entertainment') }}">
-            <button class="category-btn">🎥Entertainment</button>
+            <button class="category-btn">🎬Entertainment</button>
         </a>
 
         <p>Upload a text file or paste a text to generate audio:</p>
@@ -78,6 +78,13 @@
             <textarea id="text-input" name="text" rows="6" placeholder="Paste your text here ..."></textarea>
             
             <button type="submit">Create Audio ♫</button>
+        </form>
+
+        <!-- Voice to Text Transcription -->
+        <h2>🎤 Convert Voice to Text</h2>
+        <p>Click the button and speak for 10 seconds. The system will transcribe your voice into text.</p>
+        <form action="{{ url_for('transcribe') }}" method="GET">
+            <button type="submit">🎙️ Record & Transcribe</button>
         </form>
 
         <audio id="audiobook-player" controls hidden></audio>

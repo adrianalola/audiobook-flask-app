@@ -52,6 +52,7 @@ textarea {
     height: 150px;
     resize: none;
 }
+
 .auth-buttons {
     text-align: right;
     margin-bottom: 20px;
@@ -82,6 +83,7 @@ button {
     height: 50px;
     width: 160px;
 }
+
 .auth-buttons {
     position: absolute;
     top: 20px;

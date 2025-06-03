@@ -1,0 +1,18 @@
+#entornos virtuales
+venv/
+.env
+
+#archivos temporales de Python
+__pycache__/
+*.pyc
+
+#bases de datos locales
+*.sqlite3
+*.db
+
+#audio y archivos temporales
+audio/
+uploads/
+
+#sistema operativo
+.DS_Store

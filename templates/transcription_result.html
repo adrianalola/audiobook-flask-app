@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Transcription result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Text from audio 🎤</h1>
+    <p>{{ transcript }}</p>
+    <a href="{{ url_for('dashboard') }}">Back to the panel</a>
+</body>
+</html>

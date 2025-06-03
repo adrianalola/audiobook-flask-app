@@ -1,0 +1,8 @@
+Flask==2.3.3
+Flask-Login==0.6.3
+Flask-SQLAlchemy==3.1.1
+gTTS==2.3.2
+python-dotenv==1.0.1
+sounddevice==0.4.6
+#scipy==1.13.0
+assemblyai==0.22.0

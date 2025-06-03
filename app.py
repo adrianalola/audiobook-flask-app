@@ -5,6 +5,14 @@ from io import BytesIO
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+import sounddevice as sd
+from scipy.io.wavfile import write
+import assemblyai as aai
+
+#cargar variables de entorno
+load_dotenv()
+aai.settings.api_key = os.getenv("ASSEMBLYAI_API_KEY")
 
 app = Flask(__name__)
 
@@ -14,7 +22,7 @@ os.makedirs("audio", exist_ok=True)
 
 #configuración de la base de datos y login
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['SECRET_KEY'] = 'mysecretkey'
+app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "mysecretkey")
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -62,6 +70,9 @@ def generate_audio():
 def generate_audio_text():
     text = request.form.get('text')
     language = request.form.get('language', 'en')
+    supported_languages = ['en', 'es', 'fr', 'de', 'it']
+    if language not in supported_languages:
+        return f"Error: Language '{language}' not supported. Supported languages are: {', '.join(supported_languages)}", 400
 
     if not text:
         return "Error: No se proporcionó texto", 400
@@ -121,7 +132,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
-        flash("¡Register is succesfull! now you can login.")
+        flash("Register is succesfull! now you can login.")
         return redirect(url_for('login'))
 
     return render_template("register.html")
@@ -140,7 +151,7 @@ def login():
             flash("Inicio de sesión exitoso.")
             return redirect(url_for('dashboard'))
         else:
-            flash("informaciones incorrectas, intenta nuevamente.")
+            flash("Error, please try again.")
 
     return render_template("login.html")
 
@@ -155,12 +166,43 @@ def dashboard():
 @login_required
 def logout():
     logout_user()
-    flash("Sesión cerrada.")
+    flash("Sesion close.")
     return redirect(url_for('login'))
+
+#grabar voz, transcribir y mostrar texto
+@app.route('/transcribe', methods=['GET'])
+@login_required
+def transcribe():
+    try:
+        record()  #grabar 10 segundos
+        transcript = speech_to_text()
+        return render_template("transcription_result.html", transcript=transcript)
+    except Exception as e:
+        return f"<h2>Error:</h2><p>{str(e)}</p>", 500
+
+#grabar voz
+def record(duration=60, filename="output.wav"):
+    fs = 44100  # Sample rate
+    print("Recording...")
+    audio = sd.rec(int(duration * fs), samplerate=fs, channels=1)
+    sd.wait()
+    write(filename, fs, audio)
+    print(f"Audio saved as {filename}")
+
+#convertir voz a texto con AssemblyAI
+def speech_to_text(audio_file="output.wav"):
+    config = aai.TranscriptionConfig(speech_model=aai.SpeechModel.best)
+    transcript = aai.Transcriber(config=config).transcribe(audio_file)
+
+    if transcript.status == "error":
+        raise RuntimeError(f"Transcription failed: {transcript.error}")
+
+    return transcript.text.strip()
 
 #crear la database si no existe
 with app.app_context():
     db.create_all()
 
+#para ejecutar
 if __name__ == '__main__':
     app.run(debug=True)
