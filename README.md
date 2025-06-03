@@ -1,99 +1,108 @@
 # 🎧 Audio Creator App
 
-Flask-based web application that lets users convert text to audio using gTTS, and voice to text using AssemblyAI.
+Web application built with Flask that allows you to convert text to audio (using gTTS) and voice to text (using AssemblyAI). Includes user authentication and categorized content.
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
-- 🔐 User authentication (register, login, logout)
-- 📄 Upload `.txt` files or paste custom text
-- 🎙️ Record your voice (10 seconds) and get real-time transcription
-- 🎧 Convert text into audio using gTTS
-- 🧠 Thematic sections: Science, Recipes, Beauty, News, Entertainment, Children
-- 🔒 Private dashboard for logged-in users
-
----
-
-## 🛠 Tech Stack
-
-- **Backend**: Python, Flask, SQLite
-- **Audio**: gTTS, sounddevice, scipy
-- **Transcription**: AssemblyAI API
-- **Frontend**: HTML, CSS (custom)
-- **Authentication**: Flask-Login
-- **Environment Management**: `python-dotenv`, `.env`
+- 🔐 User registration, login and logout  
+- 📄 Upload `.txt` files or paste your own text  
+- 🎧 Convert any text to audio using gTTS  
+- 🎙️ Record 10 seconds of voice and transcribe it to text using AssemblyAI  
+- 🗂️ Category sections: Science, Recipes, Beauty, News, Entertainment, Children  
+- 👤 Private dashboard for logged-in users  
 
 ---
 
-## 📁 Project Structure
+## 🧠 Tech Stack
 
+- Python 3.12  
+- Flask (web framework)  
+- gTTS (Google Text-to-Speech)  
+- AssemblyAI (Speech-to-Text API)  
+- Flask-Login (authentication)  
+- SQLite (local DB)  
+- SoundDevice + Scipy (for recording WAV)  
+- HTML + CSS (custom layout)  
+- dotenv (for secure API keys)  
 
-📦 audio-creator-app/
+---
+
+## 🗂️ Project Structure
+
+```
+audiobook-flask-app/
 ├── app.py
 ├── .env
 ├── .gitignore
 ├── requirements.txt
 ├── static/
-│ └── styles.css
+│   └── styles.css
 ├── templates/
-│ ├── index.html
-│ ├── login.html
-│ ├── register.html
-│ ├── dashboard.html
-│ ├── transcription_result.html
-│ └── [category pages].html
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── transcription_result.html
+│   └── [category].html
 ├── uploads/
 ├── audio/
 └── venv/
-
+```
 
 ---
 
 ## ⚙️ Setup Instructions
 
-1. **Clone the repository**
+**1. Clone the repository**
 
-```bash
-git clone https://github.com/adrianalola/audio-creator-app.git
-cd audio-creator-app
+```
+git clone https://github.com/adrianalola/audiobook-flask-app.git
+cd audiobook-flask-app
+```
 
-Create and activate a virtual environment
+**2. Create and activate a virtual environment**
 
-```bash
-
+```
 python -m venv venv
-source venv/bin/activate       # Mac/Linux
-venv\\Scripts\\activate        # Windows
-Install dependencies
+source venv/bin/activate      # For Mac/Linux
+venv\Scripts\activate         # For Windows
+```
 
-```bash
+**3. Install the dependencies**
 
+```
 pip install -r requirements.txt
-Create your .env file
+```
 
-env
+**4. Create your `.env` file**
 
+```
 SECRET_KEY=your_flask_secret_key
 ASSEMBLYAI_API_KEY=your_assemblyai_api_key
-Run the app
+```
 
-```bash
+**5. Run the app**
 
+```
 python app.py
-Go to http://127.0.0.1:5000 in your browser
+```
 
-🧼 .gitignore (important)
-gitignore
+Visit `http://127.0.0.1:5000` in your browser to use the application.
 
-# virtual environment
+---
+
+## 🚫 .gitignore (recommended)
+
+```
+# virtual environments
 venv/
 .env
 
-# Flask artifacts
+# cache and compiled files
 __pycache__/
 *.pyc
-*.db
 
 # media
 uploads/
@@ -101,7 +110,11 @@ audio/
 
 # system
 .DS_Store
-👩‍💻 Author
-Adriana Martinez
-Cloud & Python Developer
-🛰️ Passionate about building powerful tools with clean architecture
+```
+
+---
+
+## 👩‍💻 Author
+
+**Adriana Martinez**  
+Junior Software Engineer | Cloud & AI Enthusiast
